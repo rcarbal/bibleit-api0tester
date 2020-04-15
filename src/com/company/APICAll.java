@@ -7,11 +7,18 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class APICAll {
-
-
     private static final String USER_AGENT = "Mozilla/5.0";
+    public static long sendGET(int number) throws IOException {
+        getHomePage();
 
-    public static void sendGET() throws IOException {
+        // Get word request
+        long endTime = System.nanoTime();
+        System.out.println("End nano time retrieved: " + endTime);
+        return endTime;
+    }
+
+    public static void getHomePage() throws IOException {
+
         URL obj = new URL("http://bibleit.co");
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
@@ -23,17 +30,15 @@ public class APICAll {
                     con.getInputStream()));
             String inputLine;
             StringBuffer response = new StringBuffer();
-
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
             in.close();
-
             // print result
             System.out.println(response.toString());
+            System.out.println("Response retrieved successfully");
         } else {
             System.out.println("GET request not worked");
         }
-
     }
 }

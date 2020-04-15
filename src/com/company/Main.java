@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        int times = 1000;
+        int times = 2;
         for (int i = 0; i < times; i++){
             System.out.println("============== >>>>> Call: " + i);
             callThread(i);
@@ -12,7 +12,7 @@ public class Main {
     }
 
     private static void callThread(int calNumber){
-        Thread myNewThread = new Thread(new BibleAPICaller());
+        Thread myNewThread = new Thread(new BibleAPICaller(calNumber));
         myNewThread.setName("Thread# " + calNumber);
         myNewThread.start();
     }
